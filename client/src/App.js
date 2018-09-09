@@ -24,17 +24,17 @@ class App extends Component {
 
   render() {
 
-    const test = this.state.searchResults.map(comic => (
-      <SearchResult title={comic.title}/>
+    const movies = this.state.searchResults.map((comic, index) => (
+      <SearchResult details={{...comic}} key={index}/>
     ));
+
     return (
       <div>   
         <input type="text" onChange={this.handleChange}></input>
         <button onClick={this.handleSearch}>click me</button>
-       <h6>
-        {test}
-        <SearchResult title={this.state.searchTerm}/>
-       </h6>
+       <div className="wrapper">
+        {movies}
+       </div>
       </div>
     );
   }

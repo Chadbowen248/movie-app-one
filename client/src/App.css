@@ -6,6 +6,25 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+.result-wrapper--image {
+  width: 100%;
+}
+
+.result-wrapper--title {
+  font-size: .5em;
+}
+.wrapper {
+  display: flex;
+  width: 1200px;
+  justify-content: space-around;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.result-wrapper {
+ width: 20%;
+ padding: .5em;
+}
 
 .App-header {
   background-color: #222;
