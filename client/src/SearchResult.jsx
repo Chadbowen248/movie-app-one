@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class SearchResult extends Component {
+const SearchResult = props => 
 
 
   // componentDidMount() {
@@ -30,14 +30,15 @@ class SearchResult extends Component {
 //     .then(res => this.setState({searchResults: res}))
 //   }
 
-  render() {
+
 
     // const test = this.state.searchResults.map(comic => {
     //   <searchResult title={}/>
     // })
-    return (
-      <div className="App">
-      <h1>{this.props.title}</h1>
+    // return (
+      
+      <span className="shitfuckede">{props.title}</span>
+      {/* <h1>{props.title}</h1> */}
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -45,9 +46,9 @@ class SearchResult extends Component {
         <p className="App-intro">{this.state.response}</p>
         <input type="text" onChange={this.handleChange}></input>
         <button onClick={this.handleSearch}>click me</button> */}
-      </div>
-    );
-  }
-}
+ 
+    // );
+  
+
 
 export default SearchResult;

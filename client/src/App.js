@@ -24,19 +24,17 @@ class App extends Component {
 
   render() {
 
-    const test = this.state.searchResults.map(comic => {
+    const test = this.state.searchResults.map(comic => (
       <SearchResult title={comic.title}/>
-    })
+    ));
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
+      <div>   
         <input type="text" onChange={this.handleChange}></input>
         <button onClick={this.handleSearch}>click me</button>
+       <h6>
         {test}
+        <SearchResult title={this.state.searchTerm}/>
+       </h6>
       </div>
     );
   }

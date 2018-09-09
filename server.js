@@ -14,7 +14,7 @@ app.get('/search/:movie', (req, res) => {
   .then(res => res.data.results.map(item => ({
       title: item.title,
       img: item.poster_path,
-      overview: item.overview,
+      desc: item.overview,
       date: item.release_date
   })))
   .then(data => res.json(data))
