@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import SearchResult from './SearchResult.jsx'
-
-import logo from './logo.svg';
+import { BrowserRouter, Route } from "react-router-dom";
+import Navigation from './Navigation'
+import Search from './Search'
+import Home from './Home'
 
 import './App.css';
 
@@ -11,31 +12,38 @@ class App extends Component {
     searchTerm: ''
   };
 
-  handleChange = event => {
-    this.setState({ searchTerm: event.target.value });
-  };
+  // handleChange = event => {
+  //   this.setState({ searchTerm: event.target.value });
+  // };
 
-  handleSearch = () => {
-    const searchTerm = this.state.searchTerm;
-    fetch(`/search/${searchTerm}`)
-    .then(res => res.json())
-    .then(res => this.setState({searchResults: res}))
-  }
+  // handleSearch = () => {
+  //   const searchTerm = this.state.searchTerm;
+  //   fetch(`/search/${searchTerm}`)
+  //   .then(res => res.json())
+  //   .then(res => this.setState({searchResults: res}))
+  // }
 
   render() {
-
-    const movies = this.state.searchResults.map((comic, index) => (
-      <SearchResult details={{...comic}} key={index}/>
-    ));
-
     return (
+      <BrowserRouter>
       <div>   
-        <input type="text" onChange={this.handleChange}></input>
-        <button onClick={this.handleSearch}>click me</button>
-       <div className="wrapper">
-        {movies}
-       </div>
+        <Navigation />
+        <Route
+            exact
+            path="/"
+            render={() => (
+              <Home />
+            )}
+          />
+        <Route
+            exact
+            path="/search"
+            render={() => (
+              <Search />
+            )}
+          />
       </div>
+      </BrowserRouter>
     );
   }
 }
