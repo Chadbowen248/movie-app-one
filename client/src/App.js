@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
+import base from "./base";
 import Navigation from './Navigation'
 import Search from './Search'
 import Home from './Home'
@@ -8,20 +9,21 @@ import './App.css';
 
 class App extends Component {
   state = {
-    searchResults: [],
-    searchTerm: ''
+    movies: []
   };
 
-  // handleChange = event => {
-  //   this.setState({ searchTerm: event.target.value });
-  // };
+  componentWillMount() {
+    this.ref = base.syncState(`/`, {
+      context: this,
+      state: "movies"
+    });
+  }
 
-  // handleSearch = () => {
-  //   const searchTerm = this.state.searchTerm;
-  //   fetch(`/search/${searchTerm}`)
-  //   .then(res => res.json())
-  //   .then(res => this.setState({searchResults: res}))
-  // }
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
+// component did mount, call firebase and get the movies
 
   render() {
     return (
@@ -32,7 +34,7 @@ class App extends Component {
             exact
             path="/"
             render={() => (
-              <Home />
+              <Home movies={this.state.movies}/>
             )}
           />
         <Route
