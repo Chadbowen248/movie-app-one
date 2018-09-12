@@ -22,8 +22,8 @@ class Search extends Component {
 
   render() {
 
-    const movies = this.state.searchResults.map((comic, index) => (
-      <SearchResult details={{...comic}} key={index}/>
+    const movies = this.state.searchResults.map((movie, index) => (
+      <SearchResult details={{...movie}} key={index} addMovie={this.props.addMovie}/>
     ));
 
     return (

@@ -23,25 +23,27 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
 
-// component did mount, call firebase and get the movies
+  // this will get passed to search, and then
+  // to search result to add it to state here
 
+   addMovie = movie => {
+    const movies = {...this.state.movies}
+    // TODO: set id on response coming from node
+    movies[`movie-${movie.id}`] = movie;
+    this.setState({ movies })
+  }
+  
   render() {
     return (
       <BrowserRouter>
       <div>   
         <Navigation />
-        <Route
-            exact
-            path="/"
-            render={() => (
-              <Home movies={this.state.movies}/>
-            )}
-          />
+        <Route exact path="/" render={() => (<Home movies={this.state.movies}/>)}/>
         <Route
             exact
             path="/search"
             render={() => (
-              <Search />
+              <Search addMovie={this.addMovie}/>
             )}
           />
       </div>

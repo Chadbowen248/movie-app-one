@@ -12,6 +12,7 @@ app.get('/search/:movie', (req, res) => {
   const movie = req.params.movie;
   axios(`http://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movie}`)
   .then(res => res.data.results.map(item => ({
+      id: item.id,
       title: item.title,
       img: item.poster_path,
       desc: item.overview,

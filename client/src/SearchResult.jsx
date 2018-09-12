@@ -7,6 +7,7 @@ const SearchResult = props =>
             alt={props.details.title}
             className="result-wrapper--image"/>
         <h1 className="result-wrapper--title">{props.details.title}</h1>
+        <button onClick={() => props.addMovie(props.details)}>add</button>
       </div>
 
 export default SearchResult;
