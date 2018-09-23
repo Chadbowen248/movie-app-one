@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Homepage = () => (
+import Movie from './Movie'
+
+
+const Homepage = (props) => (
     <div>
-        <h1>HOMES</h1>
+        {Object.entries(props.movies).map(item => <Movie details={item[1]} key={props.id}/>  )}
     </div>
 
   );
