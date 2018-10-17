@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { auth, googleAuthProvider } from './firebase';
 
-class SignIn extends Component {
-  render() {
-    return (
+const SignIn = props => (
       <div className="SignIn">
-        <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>
+        <button onClick={props.signIn}>
           Sign In
         </button>
-        <button onClick={() => auth.signOut()}>
-          Sign Out
-        </button>
       </div>
-    );
-  }
-}
+)
+
 
 export default SignIn;

@@ -19,6 +19,17 @@
  padding: .5em;
 }
 
+.logon-screen {
+  background-color: tomato;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logon-screen__content {
+  
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

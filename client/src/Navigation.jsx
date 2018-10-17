@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "./SignIn"
+// import SignIn from "./SignIn"
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,7 +19,7 @@ font-family: 'Coda', sans-serif;
 text-transform: uppercase;
 font-size: 1.5em;
 `;
-const Navigation = () => (
+const Navigation = (props) => (
   <NavigationDiv>
     <NavLink to="/">
       Collection
@@ -27,7 +27,9 @@ const Navigation = () => (
     <NavLink to="/search">
       Search
     </NavLink>
-    <SignIn />
+    <button onClick={props.signOut}>sign out</button>
+    {/* <SignIn signIn={props.signIn} signOut={props.signOut}/>
+    <span>{props.userInfo}</span> */}
   </NavigationDiv>
 );
 
