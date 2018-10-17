@@ -8,23 +8,28 @@ import Home from "./Home"
 import "./App.css"
 
 class App extends Component {
+  // constructor here to include the React component 'class' 
+  // and super is to not override defualts but to just include
+  // custom methods/logic
   constructor(props) {
     super(props)
     this.state = {
       movies: null
     }
-    this.dataRef = firebase.database().ref()
+    // the connection to firebase database
+    this.dataRef = firebase.database()
   }
 
+  // on value, watches and updates db on change
   componentDidMount() {
-    this.dataRef.on("value", snapshot => {
+    this.dataRef.ref().on("value", snapshot => {
       this.setState({
         movies: snapshot.val()
       })
     })
   }
 
-  addMovie = movie => this.dataRef.push(movie)
+  addMovie = movie => this.dataRef.ref('/movies').push(movie)
 
   render() {
     return (

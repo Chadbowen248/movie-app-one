@@ -1,4 +1,5 @@
 import React from "react";
+import SignIn from "./SignIn"
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -26,6 +27,7 @@ const Navigation = () => (
     <NavLink to="/search">
       Search
     </NavLink>
+    <SignIn />
   </NavigationDiv>
 );
 
