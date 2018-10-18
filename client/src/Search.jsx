@@ -25,7 +25,7 @@ class Search extends Component {
     const movies = this.state.searchResults.map((movie, index) => (
       <div>
       <SearchResult details={{...movie}} key={index} addMovie={this.props.addMovie}/>
-      <button onClick={() => this.props.addMovie(this.props.details)}>add</button>
+      {/* <button onClick={() => this.props.addMovie(this.props.details)}>add</button> */}
 </div>
     ));
 
