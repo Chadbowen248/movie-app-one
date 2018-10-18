@@ -9,6 +9,7 @@ background-color: Tomato;
 display: flex;
 height: 50px;
 align-items: center;
+justify-content: flex-end;
 `;
 
 const NavLink = styled(Link)`
@@ -28,6 +29,10 @@ const Navigation = (props) => (
       Search
     </NavLink>
     <button onClick={props.signOut}>sign out</button>
+    <div className="user-info">
+    <span className="user-info__profile-name">{props.userInfo.displayName}</span>
+      <img className="user-info__profile-pic " src={props.userInfo.photoURL} alt={props.userInfo.displayName}/>
+    </div>
     {/* <SignIn signIn={props.signIn} signOut={props.signOut}/>
     <span>{props.userInfo}</span> */}
   </NavigationDiv>

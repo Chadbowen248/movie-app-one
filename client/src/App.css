@@ -30,6 +30,21 @@
   
 }
 
+.user-info {
+ display: flex;
+ align-items: center;
+}
+
+.user-info__profile-pic {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.user-info__profile-name {
+  font-size: 1em;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

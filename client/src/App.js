@@ -33,12 +33,17 @@ class App extends Component {
       }
     })
     // on value, watches and updates db on change
-    this.dataRef.ref().on("value", snapshot => {
+    this.dataRef.ref('/movies').on("value", snapshot => {
       this.setState({
         movies: snapshot.val()
       })
     })
   }
+
+//   var ref = firebase.database().ref("users");
+// firebase.database().ref().on('value', function(snapshot) {
+//     // Do whatever
+// });
 
   signOut = () => {
     // perform signout with Oauth, when that's done
@@ -53,10 +58,12 @@ class App extends Component {
     auth.signInWithPopup(googleAuthProvider).then((result) => {
       this.setState({currentUser: result.user})
       window.localStorage.setItem('isLoggedIn', true);
+      this.registerUser(result.user)
     })
   }
-
+  // TODO:  pull ref /paths in to consts ^^
   addMovie = movie => this.dataRef.ref('/movies').push(movie)
+  registerUser = user => this.dataRef.ref('/users').push(user.providerData[0]);
 
   render() {
     return (
