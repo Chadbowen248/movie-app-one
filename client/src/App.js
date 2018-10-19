@@ -20,7 +20,8 @@ class App extends Component {
       currentUser: null
     }
     // the connection to firebase database
-    this.dataRef = firebase.database()
+    this.moviesRef = firebase.database().ref('/movies')
+    this.usersRef = firebase.database().ref('/users')
   }
 
   componentDidMount() {
@@ -33,17 +34,12 @@ class App extends Component {
       }
     })
     // on value, watches and updates db on change
-    this.dataRef.ref('/movies').on("value", snapshot => {
+    this.moviesRef.on("value", snapshot => {
       this.setState({
         movies: snapshot.val()
       })
     })
   }
-
-//   var ref = firebase.database().ref("users");
-// firebase.database().ref().on('value', function(snapshot) {
-//     // Do whatever
-// });
 
   signOut = () => {
     // perform signout with Oauth, when that's done
@@ -61,22 +57,23 @@ class App extends Component {
       this.registerUser(result.user)
     })
   }
-  // TODO:  pull ref /paths in to consts ^^
-  addMovie = movie => this.dataRef.ref('/movies').push(movie)
-  registerUser = user => this.dataRef.ref('/users').push(user.providerData[0]);
+  
+  addMovie = movie => this.moviesRef.push(movie)
+  registerUser = user => this.usersRef.push(user.providerData[0]);
 
   render() {
     return (
       <BrowserRouter>
         <div>
           {
+            // if currentUser is null, show login screen
             !this.state.currentUser ? <LogIn signIn={this.signIn}/> :
+            // else show app
             <div>
               <Navigation signOut={this.signOut} userInfo={this.state.currentUser}/>
-              <Route exact path="/" render={() => <Home movies={this.state.movies} />} />
+              <Route exact path="/" render={() => <Home movies={this.state.movies} currentUser={this.state.currentUser}/>} />
               <Route exact path="/search" render={() => <Search addMovie={this.addMovie} />} />
             </div>
-
           }
         </div>
       </BrowserRouter>
