@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import map from 'lodash/map'
 import StarRating from './StarRating';
 import firebase from "./firebase"
 
@@ -6,16 +7,29 @@ class Movie extends Component {
   constructor(props){
     super(props)
     this.state = {
-      starNumber: '0'
+      starNumber: 0,
+      averageRating: null
     };
     this.moviesRef = firebase.database().ref('/movies');
-    this.test = firebase.database().ref(`/movies/${this.props.id}/ratings/${this.props.currentUser.uid}`);
-    
+    this.rating = firebase.database().ref(`/movies/${this.props.id}/ratings/${this.props.currentUser.uid}`);
+    this.average = firebase.database().ref(`/movies/${this.props.id}/ratings`);
   }
 
   componentDidMount() {
-    this.test.on('value', snapshot => {
+    this.rating.on('value', snapshot => {
       this.setState({starNumber: snapshot.val()})
+    })
+    this.average.on('value', snapshot => {
+      
+      // console.log(snapshot.val())
+      // map(snapshot.val(), (item) => {
+      //   console.log(item)
+      // })
+      const ratings = Object.values(snapshot.val());
+      const average = ratings.reduce((x , y) => {
+        return Number(x) + Number(y);
+      }, 0)
+      this.setState({averageRating: average/ratings.length})
     })
   }
 
@@ -24,12 +38,6 @@ class Movie extends Component {
       this.handleSelect();
     });
   };
-
-//   this.setState({
-//     someState: obj
-// }, () => {
-//     this.afterSetStateFinished();
-// });
 
   handleSelect = () => {
     this.moviesRef.child(this.props.id)
@@ -49,7 +57,7 @@ render() {
         <div className="stars--container">
           <StarRating countStars={this.countStars} selectedStar={this.state.starNumber} handleSelect={this.handleSelect}/>
         </div>
-        <span className="score">{this.state.starNumber}</span>
+        <span className="score">{this.state.averageRating}</span>
       </div>
 
   )

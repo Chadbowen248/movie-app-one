@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { BrowserRouter, Route } from "react-router-dom"
 import { auth, googleAuthProvider } from './firebase';
 import firebase from "./firebase"
-import LogIn from "./LogIn"
+import SignIn from "./SignIn"
 import Navigation from "./Navigation"
 import Search from "./Search"
 import Home from "./Home"
@@ -67,7 +67,7 @@ class App extends Component {
         <div>
           {
             // if currentUser is null, show login screen
-            !this.state.currentUser ? <LogIn signIn={this.signIn}/> :
+            !this.state.currentUser ? <SignIn signIn={this.signIn}/> :
             // else show app
             <div>
               <Navigation signOut={this.signOut} userInfo={this.state.currentUser}/>

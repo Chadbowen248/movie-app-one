@@ -1,10 +1,68 @@
+/* SIGN-IN-SCREEN */
+
+.sign-in-screen {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-family: "Impact";
+}
+
+.sign-in-screen__logo {
+  margin-top: 3px;
+}
+
+.sign-in-screen__content {
+  text-transform: uppercase;
+}
+
+.button {
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: "Impact";
+}
+/* ------------------------------------------------------------------ */
+
+.navigation {
+  width: 100%;
+  background-color: Tomato;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navigation__link {
+  color: white;
+  padding-right: 1em;
+  text-decoration: none;
+  font-family: "Impact", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info__profile-pic {
+  width: 50px;
+}
 
 .result-wrapper--image {
   width: 100%;
 }
 
 .result-wrapper--title {
-  font-size: .5em;
+  font-size: 0.5em;
 }
 .wrapper {
   display: flex;
@@ -21,7 +79,6 @@
   height: 50px;
   border: solid 3px white;
   position: absolute;
-
 }
 .stars--container {
   bottom: 190px;
@@ -32,10 +89,9 @@
   display: flex;
 }
 
-
 .fa-star {
-  padding-right: .5em;
-  padding-left: .5em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
 }
 
 .result-wrapper:hover .selected {
@@ -47,21 +103,21 @@
   position: absolute;
   bottom: 18px;
   left: 22px;
-  font-family: 'Impact', sans-serif;
+  font-family: "Impact", sans-serif;
 }
 .result-wrapper {
- width: 20%;
- padding: .5em;
- position: relative;
+  width: 20%;
+  padding: 0.5em;
+  position: relative;
 }
 
 .result-wrapper:hover .stars--container {
   /* display: flex; */
   color: white;
-} 
+}
 
 .content-overlay {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   height: 91%;
   width: 94%;
@@ -76,36 +132,4 @@
 }
 .result-wrapper:hover .content-overlay {
   opacity: 1;
-}
-
-.logon-screen {
-  background-color: tomato;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.logon-screen__content {
-  
-}
-
-.user-info {
- display: flex;
- align-items: center;
-}
-
-.user-info__profile-pic {
-  border-radius: 50%;
-  width: 45px;
-}
-
-.user-info__profile-name {
-  font-size: 1em;
-}
-
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
