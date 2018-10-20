@@ -1,4 +1,7 @@
 /* SIGN-IN-SCREEN */
+*:not(.fa-star) {
+  box-sizing: border-box;
+}
 
 .sign-in-screen {
   background-color: #fff;
@@ -66,10 +69,12 @@
 }
 .wrapper {
   display: flex;
-  width: 1200px;
-  justify-content: space-around;
+  width: 100%;
+  /* max-width: 1200px; */
+  justify-content: flex-start;
   margin: 0 auto;
   flex-wrap: wrap;
+  padding: 1em;
 }
 .square {
   bottom: 0;
@@ -94,9 +99,10 @@
   padding-left: 0.5em;
 }
 
-.result-wrapper:hover .selected {
+/* .result-wrapper:hover .selected {
   color: gold;
-}
+} */
+
 
 .score {
   color: white;
@@ -111,15 +117,18 @@
   position: relative;
 }
 
-.result-wrapper:hover .stars--container {
-  /* display: flex; */
+/* .selected {
+  color: yellow;
+} */
+
+/* .result-wrapper:hover .stars--container {
   color: white;
-}
+} */
 
 .content-overlay {
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
-  height: 91%;
+  height: 90%;
   width: 94%;
   left: 8px;
   top: 8px;
@@ -130,6 +139,73 @@
   -moz-transition: all 0.4s ease-in-out 0s;
   transition: all 0.4s ease-in-out 0s;
 }
-.result-wrapper:hover .content-overlay {
+/* .result-wrapper:hover .content-overlay {
   opacity: 1;
+} */
+
+@media (min-width: 830px) {
+  /* .stars--container {
+    bottom: 190px;
+    width: 100%;
+    position: relative;
+    color: transparent;
+    justify-content: space-evenly;
+    display: flex;
+  } */
+
+  
+  .fa-star {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+  .result-wrapper:hover .selected {
+    color: gold;
+  }
+  .result-wrapper:hover .stars--container {
+    color: white;
+  }
+  .result-wrapper:hover .content-overlay {
+    opacity: 1;
+  }
 }
+@media (max-width: 1000px) {
+  /* .wrapper {
+    background-color: red;
+  } */
+  .result-wrapper {
+    width: 25%;
+  }
+}
+@media (max-width: 830px) {
+  .result-wrapper {
+    width: 33.33%;
+  }
+  .stars--container {
+    bottom: 0;
+  }
+  .star-rating {
+    color: #ccc;
+  }
+
+  .star-rating .selected {
+    color: gold;
+  }
+}
+@media (max-width: 730px) {
+  .result-wrapper {
+    width: 50%;
+  }
+  /* .stars--container {
+    bottom: 0;
+  }
+  .star-rating {
+    color: #ccc;
+  } */
+}
+@media (max-width: 630px) {
+  .result-wrapper {
+    width: 100%;
+  }
+
+}
+  
