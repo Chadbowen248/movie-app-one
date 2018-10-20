@@ -54,12 +54,12 @@ class App extends Component {
     auth.signInWithPopup(googleAuthProvider).then((result) => {
       this.setState({currentUser: result.user})
       window.localStorage.setItem('isLoggedIn', true);
-      this.registerUser(result.user)
+      // this.registerUser(result.user)
     })
   }
   
   addMovie = movie => this.moviesRef.push(movie)
-  registerUser = user => this.usersRef.push(user.providerData[0]);
+  // registerUser = user => this.usersRef.push(user.providerData[0]);
 
   render() {
     return (

@@ -53,11 +53,14 @@ render() {
         <img src={`https://image.tmdb.org/t/p/original${this.props.details.img}`}
             alt={this.props.details.title}
             className="result-wrapper--image"/>
-        <div className="square"></div>
+        <div className="square">
+  
+        <p className="score">{this.state.averageRating}</p>
+        
+        </div>
         <div className="stars--container">
           <StarRating countStars={this.countStars} selectedStar={this.state.starNumber} handleSelect={this.handleSelect}/>
         </div>
-        <span className="score">{this.state.averageRating}</span>
       </div>
 
   )
