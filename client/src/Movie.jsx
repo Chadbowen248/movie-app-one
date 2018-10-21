@@ -47,6 +47,9 @@ class Movie extends Component {
   }
 
 render() {
+  const chad = 'Aq7wqE6HORSHbtdutQyketPWZ5P2';
+  const meghana = '3U8psXkA25dRY27zXzgK7WqTXts2';
+  const isAllowed = (this.props.currentUser.uid === chad || this.props.currentUser.uid === meghana) ? '' : 'disabled'
   return(
       <div className="result-wrapper">
       <div className="content-overlay"></div>
@@ -58,7 +61,7 @@ render() {
         <p className="score">{this.state.averageRating}</p>
         
         </div>
-        <div className="stars--container">
+        <div className={`stars--container ${isAllowed}`}>
           <StarRating countStars={this.countStars} selectedStar={this.state.starNumber} handleSelect={this.handleSelect}/>
         </div>
       </div>

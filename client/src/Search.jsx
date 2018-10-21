@@ -29,9 +29,11 @@ class Search extends Component {
     return (
   
      
-      <div>   
-        <input type="text" onChange={this.handleChange}></input>
-        <button onClick={this.handleSearch}>click me</button>
+      <div>
+        <div className="search-wrapper">
+          <input className="search-wrapper__input" type="text" onChange={this.handleChange}></input>
+          <button className="button" onClick={this.handleSearch}>search</button>
+        </div>   
        <div className="wrapper">
         {movies}
        </div>
