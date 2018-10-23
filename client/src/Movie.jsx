@@ -20,16 +20,12 @@ class Movie extends Component {
       this.setState({starNumber: snapshot.val()})
     })
     this.average.on('value', snapshot => {
-      
-      // console.log(snapshot.val())
-      // map(snapshot.val(), (item) => {
-      //   console.log(item)
-      // })
       const ratings = Object.values(snapshot.val());
       const average = ratings.reduce((x , y) => {
         return Number(x) + Number(y);
       }, 0)
-      this.setState({averageRating: average/ratings.length})
+      const formattedPrice = (average/ratings.length).toFixed(1)
+      this.setState({averageRating: formattedPrice})
     })
   }
 
@@ -47,9 +43,9 @@ class Movie extends Component {
   }
 
 render() {
-  const chad = 'Aq7wqE6HORSHbtdutQyketPWZ5P2';
-  const meghana = '3U8psXkA25dRY27zXzgK7WqTXts2';
-  const isAllowed = (this.props.currentUser.uid === chad || this.props.currentUser.uid === meghana) ? '' : 'disabled'
+  // const chad = 'Aq7wqE6HORSHbtdutQyketPWZ5P2';
+  // const meghana = '3U8psXkA25dRY27zXzgK7WqTXts2';
+  // const isAllowed = (this.props.currentUser.uid === chad || this.props.currentUser.uid === meghana) ? '' : 'disabled'
   return(
       <div className="result-wrapper">
       <div className="content-overlay"></div>
@@ -61,7 +57,7 @@ render() {
         <p className="score">{this.state.averageRating}</p>
         
         </div>
-        <div className={`stars--container ${isAllowed}`}>
+        <div className={`stars--container`}>
           <StarRating countStars={this.countStars} selectedStar={this.state.starNumber} handleSelect={this.handleSelect}/>
         </div>
       </div>
